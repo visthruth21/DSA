@@ -1,0 +1,83 @@
+
+
+Working with arrays:
+
+Q1 - Given an array in which the last element isnt sorted:
+   - approach 1 -> find the position of where the element needs to be inserted 
+                    int pos = -1
+                   for( int i=0 ; i < n ; i++){
+                    if(arr[i] > arr[n-1]){
+                        pos = i;
+                    }
+                   }
+                -> swap the elements from the last to the i+1 th position 
+                   for( i = n-1 ; i > pos ; i--){
+                     arr[i] = arr[i-1];
+
+                   }
+                   arr[pos] = arr[n-1];
+    
+   - approach 2 -> swap the elements from last 
+                for( int i = n-1; i>0; i--){
+		            if(arr[i] < arr[i-1]){
+			            int temp = arr[i];
+			            arr[i] = arr[i-1];
+			            arr[i-1] = temp;
+		}
+		
+		
+	}
+
+
+Q2-> Rotate the array:
+
+    Approach 1 -> Swap the elements in the array:
+                  for(int i = 0,j=n-1; i < n , j > i ; i++,j--){
+		
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                    
+                }
+
+    Approach 2 -> Create a new array and input the elements backwards
+                - takes an extra auxilary space
+
+
+Q3 -> Rotate the given array k times;
+
+Approach1 ->  - rotate the array one time from the right
+              - perform this rotation k times
+
+                int k = 3;
+                while ( k !=0 ){
+                    int first = arr[n-1];
+                    for(int i = n-1 ; i > 0 ; i--){
+                        
+                        int temp = arr[i];
+                        arr[i] = arr[i-1];
+                        arr[i-1] = temp;
+                    
+                    }
+                    arr[0] = first;
+                    k--;
+                }
+
+Approach 2 -> Roatate function x 3 times 
+            - 0 to n-k-1 
+            - n-k to n-1 
+            - 0 to n-1
+
+
+Q4 -> Array contains elements from 1 to N+1 and has exactly one element missing 
+
+      i.e 1,2,4,5 missing element is 3 
+
+      Approach 1 -> sort the array and check if arr[i] != arr[i+1]
+
+      Approach 2 -> create a new array and whenever you visit the array increment the visited index by 1
+                 -  and later check which index was not visited and return the answer
+
+     Approach 3 -> find the sum of array and sub the sum of elements of current array
+                - return the answer
+
